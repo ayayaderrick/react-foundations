@@ -3,20 +3,23 @@
     <div id="app"></div>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script
-      src="https://unpkg.com/@babel/standalone/babel.min.js"
-      data-type="module"
-    ></script>
-    <script type="text/jsx">
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/javascript" data-presets="react">
       const app = document.getElementById("app");
-      function Header() {
-        return <h1>Develop. Preview. Ship.</h1>;
+      function Header({ title }) {
+        return <h1>{title}</h1>;
       }
 
       function HomePage() {
+        const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
         return (
           <div>
-            <Header />
+            <Header title="Develop. Preview. Ship" />
+            <ul>
+              {names.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
           </div>
         );
       }
