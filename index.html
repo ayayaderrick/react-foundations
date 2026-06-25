@@ -7,11 +7,15 @@
     <script type="text/javascript" data-presets="react">
       const app = document.getElementById("app");
       function Header({ title }) {
-        return <h1>{title}</h1>;
+        return <h1>{title ? title : "Default title"}</h1>;
       }
 
       function HomePage() {
         const names = ["Ada Lovelace", "Grace Hopper", "Margaret Hamilton"];
+        const handleClick = () => {
+          setLikes(likes + 1);
+        };
+        const [likes, setLikes] = React.useState(0);
         return (
           <div>
             <Header title="Develop. Preview. Ship" />
@@ -20,6 +24,7 @@
                 <li key={name}>{name}</li>
               ))}
             </ul>
+            <button onClick={handleClick}>Like({likes})</button>
           </div>
         );
       }
